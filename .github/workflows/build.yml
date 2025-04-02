@@ -1,7 +1,10 @@
-name: Build and Deploy
+name: Build
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -19,7 +22,7 @@ jobs:
           node-version: 23
 
       - name: Install dependencies
-        run: npm install
+        run: cd ./src/backend && npm install
 
       - name: Build the application
-        run: npm run build
+        run: cd ./src/backend && npm run build
